@@ -35,7 +35,32 @@ body {
   padding: 14px 20px; /* Add some padding */
   text-decoration: none; /* Remove underline */
 }
+/* Column container */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  flex: 30%; /* Set the width of the sidebar */
+  background-color: white; /* Grey background color */
+  padding: 20px; /* Some padding */
+}
+
+/* Main column */
+.main {
+  flex: 70%; /* Set the width of the main content */
+  background-color: #f1f1f1; /* White background color */
+  padding: 20px; /* Some padding */
+}
+
 </style>
+/* This is for the chatbox*/
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+  
 </head>
 
 <body>
@@ -48,4 +73,40 @@ body {
   <a href="https://michael-franke.github.io/XPLab_2019/">GitHub - XPLab_2019</a>
 </div>
 
+<div class="row">
+  <div class="side">
+    <p> The Location of the event is circled green.<br></p>
+    <img src="LageplanWesterberg.png" width="300" height="300">
+  </div>
+  <div class="main">
+    <p> Here you can chat with yourself about the project you would like to reproduce: <br>
+    </p>
+    <div class="info">
+          <label for="example">Enter Text
+          </label>
+          <input id="example" type="text"
+                 name="Ntext" size="20">
+          <input id="sent" type="submit"
+                 value="Send">
+          <input id="clear" type="button"
+                        value="Clear">
+      </div>
+        <p id="para">        </p>
+  </div>
+</div>
 </body>
+<script>
+  window.onclick = function(e)
+    {   var id =  e.target.id;
+       if (id === 'sent')
+       { var txtbox = document.getElementById('example');
+         var txt = txtbox.value;
+         $( "#para" ).append( txt + '<br>');
+         $( txtbox ).val('');
+       }
+       if (id == 'clear')
+         {
+           $( "#para" ).empty();
+       }
+    }
+</script>
