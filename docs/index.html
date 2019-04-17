@@ -7,13 +7,14 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
+  height: 100%;
   }
 
 /* Style the header */
 .header {
   padding: 60px;
   text-align: center;
-  background:  	lawngreen;
+  background:  	lightgreen;
   color:  #333;
   font-size: 20px;
   }
@@ -42,6 +43,8 @@ body {
   height:100%;
   float:center;
   display: inline-block;
+  vertical-align: top;
+  perspective: 1000px;
 }
 
 /* Create two unequal columns that sits next to each other */
@@ -55,11 +58,31 @@ body {
 
 /* Main column */
 .main {
-  float:right;
+  float:center;
   width: 100%;
-  background-color: #f1f1f1; /* White background color */
-  padding: 20px; /* Some padding */
-  vertical-align: top;
+  background-color: #444444; /* White background color */
+  color: white;
+  padding: 1em;
+  margin-top: 2em;
+  margin-left: 2em;
+  vertical-align: center;
+}
+
+@keyframes rotation {
+    from {  transform: rotate3d(0, 1, 0, 0deg);}
+    to {   transform: rotate3d(0, 1, 0, 360deg);}
+}
+
+#meaningless {
+    background-color: #444444;
+    color: white;
+    height: 5em;
+    width: 10em;
+    padding: 1em;
+    margin-top: 2em;
+    text-align:center;
+
+    animation: rotation 3s linear infinite;
 }
 
 /* This is for the chatbox*/
@@ -71,8 +94,8 @@ body {
 
 <body>
 <div class = "header">
-  <h1><strong>PsychologyLab 2019</strong></h1>
-  <p> This website was created for of the PsychologyLab 2019. </p>
+  <h1><strong>Psychology Lab 2019</strong></h1>
+  <p> This website was created for the Experimental Psychology Lab 2019. </p>
 </div>
 
 <div class="navbar">
@@ -91,12 +114,12 @@ body {
 
 <div class="row">
 
-  <div class="main" align="top">
+  <div class="main">
       <p id="para">        </p>
     <p> Here you can chat with yourself about the project you would like to reproduce: <br>
     </p>
     <div class="info">
-          <label for="example">Enter Text
+          <label for="example">
           </label>
           <input id="example" type="text"
                  name="Ntext" size="20">
@@ -109,6 +132,13 @@ body {
   </div>
 </div>
 
+<div class="row" style="padding-left: 10%;">
+    <div id="meaningless">
+        Spinning box of meaninglessness.
+
+    </div>
+</div>
+
 </body>
 <script>
   window.onclick = function(e)
@@ -116,12 +146,12 @@ body {
        if (id === 'sent')
        { var txtbox = document.getElementById('example');
          var txt = txtbox.value;
-         $( "#para" ).append( txt + '<br>');
+         $( "#para" ).append( '<font color="lightgreen">' + txt + '</font><br>');
          $( txtbox ).val('');
        }
        if (id == 'clear')
          {
            $( "#para" ).empty();
        }
-    }
+   };
 </script>
